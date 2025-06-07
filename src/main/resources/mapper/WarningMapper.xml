@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.xiaomibms.mapper.WarningMapper">
+    <update id="updateWarning" parameterType="com.example.xiaomibms.domain.entity.Warning">
+        UPDATE warning
+        <set>
+            <if test="carId != null">
+                car_id = #{carId},
+            </if>
+            <if test="batteryType != null">
+                battery_type = #{batteryType},
+            </if>
+            <if test="warnId != null">
+                warn_id = #{warnId},
+            </if>
+            <if test="warnName != null">
+                warn_name = #{warnName},
+            </if>
+            <if test="warnLevel != null">
+                warn_level = #{warnLevel},
+            </if>
+            <if test="signalId != null">
+                signal_id = #{signalId},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+</mapper>

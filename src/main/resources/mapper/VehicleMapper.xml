@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.xiaomibms.mapper.VehicleMapper">
+    <update id="update" parameterType="com.example.xiaomibms.domain.entity.Vehicle">
+        UPDATE vehicle
+        <set>
+            <!-- 若 frameNumber 不为 null，则更新 frame_number -->
+            <if test="frameNumber != null">
+                frame_number = #{frameNumber},
+            </if>
+            <!-- 若 batteryType 不为 null，则更新 battery_type -->
+            <if test="batteryType != null">
+                battery_type = #{batteryType},
+            </if>
+            <!-- 若 totalMileage 不为 null，则更新 total_mileage -->
+            <if test="totalMileage != null">
+                total_mileage = #{totalMileage},
+            </if>
+            <!-- 若 batteryHealth 不为 null，则更新 battery_health -->
+            <if test="batteryHealth != null">
+                battery_health = #{batteryHealth},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+</mapper>

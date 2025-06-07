@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.xiaomibms.mapper.BatterySignalMapper">
+    <resultMap id="BaseResultMap" type="com.example.xiaomibms.domain.entity.BatterySignal">
+        <id column="id" property="id"/>
+        <result column="car_id" property="carId"/>
+        <result column="battery_type" property="batteryType"/>
+        <result column="max_voltage" property="maxVoltage"/>
+        <result column="min_voltage" property="minVoltage"/>
+        <result column="max_current" property="maxCurrent"/>
+        <result column="min_current" property="minCurrent"/>
+        <result column="status" property="status"/>
+        <result column="create_time" property="createTime"/>
+    </resultMap>
+
+    <update id="update" parameterType="com.example.xiaomibms.domain.entity.BatterySignal">
+        UPDATE battery_signal
+        <set>
+            <if test="carId != null">
+                car_id = #{carId},
+            </if>
+            <if test="batteryType != null">
+                battery_type = #{batteryType},
+            </if>
+            <if test="maxVoltage != null">
+                max_voltage = #{maxVoltage},
+            </if>
+            <if test="minVoltage != null">
+                min_voltage = #{minVoltage},
+            </if>
+            <if test="maxCurrent != null">
+                max_current = #{maxCurrent},
+            </if>
+            <if test="minCurrent != null">
+                min_current = #{minCurrent},
+            </if>
+            <if test="status != null">
+                status = #{status},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+    <update id="updateWithoutShardingKey" parameterType="com.example.xiaomibms.domain.entity.BatterySignal">
+        UPDATE battery_signal
+        <set>
+            <if test="carId != null">car_id = #{carId},</if>
+            <if test="batteryType != null">battery_type = #{batteryType},</if>
+            <if test="maxVoltage != null">max_voltage = #{maxVoltage},</if>
+            <if test="minVoltage != null">min_voltage = #{minVoltage},</if>
+            <if test="maxCurrent != null">max_current = #{maxCurrent},</if>
+            <if test="minCurrent != null">min_current = #{minCurrent},</if>
+        </set>
+        WHERE id = #{id}
+    </update>
+
+</mapper>
